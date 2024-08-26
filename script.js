@@ -1,6 +1,7 @@
 const board = document.getElementById('chessboard');
 const currentPlayerDisplay = document.getElementById('current-player');
 const selectedPieceDisplay = document.getElementById('selected-name');
+const moveHistoryDisplay = document.getElementById('move-history');
 
 let currentPlayer = 'A';
 let selectedPiece = null;
@@ -14,6 +15,7 @@ const initialPieces = [
 ];
 
 let pieces = JSON.parse(JSON.stringify(initialPieces));
+let moveHistory = [];
 
 function renderBoard() {
     board.innerHTML = '';
@@ -60,6 +62,7 @@ function movePiece(direction) {
     }
 
     renderBoard();
+    updateMoveHistory(name, direction);
 }
 
 function movePawn(row, col, direction) {
@@ -164,7 +167,18 @@ function resetGame() {
     currentPlayerDisplay.innerText = currentPlayer;
     selectedPiece = null;
     selectedPieceDisplay.innerText = 'None';
+    moveHistory = [];
+    renderMoveHistory();
     renderBoard();
+}
+
+function updateMoveHistory(piece, direction) {
+    moveHistory.push(`${piece}: ${direction}`);
+    renderMoveHistory();
+}
+
+function renderMoveHistory() {
+    moveHistoryDisplay.innerHTML = moveHistory.join('<br>');
 }
 
 renderBoard();
