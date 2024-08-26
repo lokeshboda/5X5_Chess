@@ -6,10 +6,18 @@ body {
     background-color: #333;
     color: white;
     font-family: Arial, sans-serif;
+    margin: 0;
 }
 
 .game-container {
-    text-align: center;
+    display: flex;
+    gap: 20px;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .board {
@@ -17,7 +25,6 @@ body {
     grid-template-columns: repeat(5, 60px);
     grid-template-rows: repeat(5, 60px);
     gap: 4px;
-    margin: 20px auto;
     background-color: #000;
     padding: 10px;
     border-radius: 10px;
@@ -39,6 +46,7 @@ body {
 }
 
 .controls {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -55,4 +63,24 @@ body {
 
 .controls button:hover {
     background-color: #555;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#move-history {
+    list-style-type: none;
+    padding: 0;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#move-history li {
+    margin-bottom: 5px;
 }
